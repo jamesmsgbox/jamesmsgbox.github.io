@@ -1,12 +1,17 @@
 const cards = [
   {
-    front: '到了電影院，電影已經開始了。',
-    back: 'Ada Lovelace',
+    front: '如果天塌下來，我就告訴你一個大秘密。',
+    back: 'If the sky were to fall, I would tell you the biggest secret.',
     flipped: false,
   },
   {
-    front: '如果我很有錢，我會買很多汽車給你',
-    back: 'Edith Clarke',
+    front: '如果John 昨天晚上有穿外套，他今天就不會感冒了。',
+    back: 'If John had worn a jacket last night, he wouldn\'t caught a cold now.',
+    flipped: false,
+
+  },  {
+    front: '如果你站在我的立場，你當時可能不會這樣說。',
+    back: 'If you had been in my shoes, you might not have said so.',
     flipped: false,
 
   },
@@ -74,12 +79,11 @@ new Vue({
     allcontent: '',
     questioncode: '',
     error: false,
-    isShow: true,
+    isShow: false,
   },
   methods: {
     toggleCard: function(card){
       card.flipped = !card.flipped;
-        // console.log(JSON.stringify(this.allcontent));
     },
     addNew: function(){
       // !this.newFront || !this.newBack also works
