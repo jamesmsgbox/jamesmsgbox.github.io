@@ -102,6 +102,11 @@ li:nth-child(-7n+7) .card{
   position: relative;
 }
 
+.top-item{
+  width: 50%;
+  margin: 0 auto
+}
+
 
 label{
   font-weight: 400;
@@ -116,7 +121,31 @@ input{
   outline: none;
 }
 
-button{
+/*button{*/
+  /*border-radius: 5px;*/
+  /*border: 1px solid #87cb84;*/
+  /*background-color: #87cb84;*/
+  /*padding: 8px 15px;*/
+  /*outline: none;*/
+  /*font-size: 14px;*/
+  /*font-weight: 700;*/
+  /*color: #fff;*/
+  /*cursor: pointer;*/
+  /*transition: all 0.3s ease;*/
+/*}*/
+
+/*button:hover{*/
+  /*background-color: #70a66f;*/
+/*}*/
+
+.error{
+  margin-top: 10px;
+  display: block;
+  color: #e44e42;
+  font-weight: 600;
+}
+
+.button1{
   border-radius: 5px;
   border: 1px solid #87cb84;
   background-color: #87cb84;
@@ -129,13 +158,40 @@ button{
   transition: all 0.3s ease;
 }
 
-button:hover{
+.button1:hover{
   background-color: #70a66f;
 }
 
-.error{
-  margin-top: 10px;
-  display: block;
-  color: #e44e42;
-  font-weight: 600;
+.button0{
+  border-radius: 5px;
+  border: 1px solid #51aae5;
+  background-color: #51aae5;
+  padding: 8px 15px;
+  outline: none;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button0:hover{
+  background-color: #142E5A;
+}
+
+.button3{
+  border-radius: 5px;
+  border: 1px solid #FFC300;
+  background-color: #FFC300;
+  padding: 8px 15px;
+  outline: none;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button3:hover{
+  background-color: #E67E22;
 }

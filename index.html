@@ -6,13 +6,31 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <title>Flash!</title>
+  <title>Cherry!</title>
 </head>
 <body>
   <div id="flashcard-app" class="container">
 
-    <h1>Flashcard App!</h1>
+    <h1>超級櫻文Super English!</h1>
+    <div v-if="isShow" class="top-item">
+      <label for="mInput">Input
+        <input v-model.trim="allcontent" type="text" id="allcontent">
+        <button class="button3" v-on:click="Loading">Loading</button>
+      </label>
+      <label for="moutput">Output
+        <input v-model.trim="questioncode" type="text" id="questioncode">
+      </label>
+      <ul>
+        <li v-for="n in mCount">
+          <div>
+            <button v-bind:class="'button'+n%2" v-on:click="keepContent(n)">Keep{{n}}</button>
+            <button v-bind:class="'button'+n%2" v-on:click="GetContent(n)">Get{{n}}</button>
+          </div>
+        </li>
+      </ul>
+    </div>
 
+<br/>
     <div class="flashcard-form">
       <label for="front">Front
         <input v-model.trim="newFront" type="text" id="front">
@@ -20,7 +38,13 @@
       <label for="back">Back
         <input v-on:keypress.enter="addNew" v-model.trim="newBack" type="text" id="back">
       </label>
-      <button v-on:click="addNew">Add a New Card</button>
+      <button class="button3" v-on:click="addNew">Add a New Card</button>
+      <span v-if="isShow">
+        <button class="button0" v-on:click="getShow">Hidden</button>
+      </span>
+      <span  v-else>
+        <button class="button0" v-on:click="getShow">Show</button>
+      </span>
       <span class="error" v-show="error">Oops! Flashcards need a front and a back.</span>
     </div>
 
@@ -51,7 +75,6 @@
     </ul> -->
     
   </div>
-
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
   <script src="app.js"></script>
 </body>
