@@ -66,58 +66,14 @@ const cards = [
     back: 'Mary is very poor now, she wishes she could win the lottery.',
     flipped: false,
   },
-  // {
-  //   front: 'Famous World War II Enigma code breaker',
-  //   back: 'Alan Turing',
-  //   flipped: false,
-  // },
-  // {
-  //   front: 'Created satellite orbit analyzation software for NASA',
-  //   back: 'Dr. Evelyn Boyd Granville',
-  //   flipped: false,
-  // },
-  //   {
-  //       front: 'The "First Computer Programmer"',
-  //       back: 'Ada Lovelace',
-  //       flipped: false,
-  //   },
-  //   {
-  //       front: 'Invented the "Clarke Calculator"',
-  //       back: 'Edith Clarke',
-  //       flipped: false,
-  //
-  //   },
-  //   {
-  //       front: 'Famous World War II Enigma code breaker',
-  //       back: 'Alan Turing',
-  //       flipped: false,
-  //   },
-  //   {
-  //       front: 'Created satellite orbit analyzation software for NASA',
-  //       back: 'Dr. Evelyn Boyd Granville',
-  //       flipped: false,
-  //   },
-  //   {
-  //       front: 'The "First Computer Programmer"',
-  //       back: 'Ada Lovelace',
-  //       flipped: false,
-  //   },
-  //   {
-  //       front: 'Invented the "Clarke Calculator"',
-  //       back: 'Edith Clarke',
-  //       flipped: false,
-  //
-  //   },
-  //   {
-  //       front: 'Famous World War II Enigma code breaker',
-  //       back: 'Alan Turing',
-  //       flipped: false,
-  //   },
-  //   {
-  //       front: 'Created satellite orbit analyzation software for NASA',
-  //       back: 'Dr. Evelyn Boyd Granville',
-  //       flipped: false,
-  //   },
+];
+
+const notYetCard = [
+  {
+    front: '尚無資料',
+    back: 'Not yet',
+    flipped: false,
+  },
 ];
 
 var vm = new Vue({
@@ -199,7 +155,12 @@ var vm = new Vue({
     },
     firebaseGet: function(itemName){
       db.ref("/"+itemName).once('value', function (snapshot) {
-        this.cards = vm.setCards(JSON.parse(snapshot.val()));
+        var mVal = snapshot.val();
+        if (mVal) {
+          vm.setCards(JSON.parse(mVal));
+        } else {
+          vm.setCards(notYetCard);
+        }
       });
     },
   }
