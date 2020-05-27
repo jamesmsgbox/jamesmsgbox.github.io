@@ -1,3 +1,19 @@
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyBHC3WdzMR_N6s4yvVY5siN6Mh75nCjaCM",
+    authDomain: "superenglishbot.firebaseapp.com",
+    databaseURL: "https://superenglishbot.firebaseio.com",
+    projectId: "superenglishbot",
+    storageBucket: "superenglishbot.appspot.com",
+    messagingSenderId: "108690995851",
+    appId: "1:108690995851:web:41c3011fad52bb0936728e",
+    measurementId: "G-Y3HSP8TY0K"
+  };
+  if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+  }
+  const db = firebase.database();
+
 const cards = [
   {
     front: '如果天塌下來，我就告訴你一個大秘密。',
@@ -104,17 +120,24 @@ const cards = [
   //   },
 ];
 
-new Vue({
+var vm = new Vue({
   el: '#flashcard-app',
   data: {
     mCount: 10,
-    cards: cards,
+    cards: '',
     newFront: '',
     newBack: '',
     allcontent: '',
     questioncode: '',
     error: false,
     isShow: false,
+  },
+  created: function () {
+    try {
+      this.firebaseGet("keep1");
+    } catch (e) {
+      this.cards = cards;
+    }
   },
   methods: {
     toggleCard: function(card){
@@ -137,22 +160,28 @@ new Vue({
       }
     },
     keepContent: function(index){
-        localStorage.setItem("keep"+index, JSON.stringify(this.cards));
+        var itemName = "keep"+index;
+        var mData = JSON.stringify(this.cards);
+        // localStorage.setItem(itemName, mData);
+        this.firebaseSet(itemName, mData);
         this.questioncode = JSON.stringify(this.cards);
     },
     GetContent: function(index){
-        this.cards = "";
-        this.cards = this.shuffle(JSON.parse(localStorage.getItem("keep"+index)));
+        var itemName = "keep"+index;
+        // var getData = localStorage.getItem(itemName);
+        this.firebaseGet(itemName);
         this.questioncode = JSON.stringify(this.cards);
-
     },
     Loading: function(){
-        this.cards = "";
-        this.cards = this.shuffle(JSON.parse(this.allcontent));
+        this.setCards(JSON.parse(this.allcontent));
         this.questioncode = JSON.stringify(this.cards);
     },
     getShow: function(){
       this.isShow = !this.isShow;
+    },
+    setCards: function(data){
+      this.cards = "";
+      this.cards = this.shuffle(data);
     },
     shuffle: function(sourceArray){
         for (var i = 0; i < sourceArray.length - 1; i++) {
@@ -163,6 +192,19 @@ new Vue({
             sourceArray[i] = temp;
         }
         return sourceArray;
-    }
+    },
+    firebaseSet: function(itemName, data){
+      db.ref("/"+itemName).set(data)
+      .then(function () {
+          alert("建立成功");
+      }).catch(function () {
+          alert("伺服器發生錯誤，請稍後再試");
+      });
+    },
+    firebaseGet: function(itemName){
+      db.ref("/"+itemName).once('value', function (snapshot) {
+        this.cards = vm.setCards(JSON.parse(snapshot.val()));
+      });
+    },
   }
 });
