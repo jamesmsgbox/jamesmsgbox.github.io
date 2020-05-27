@@ -133,11 +133,7 @@ var vm = new Vue({
     isShow: false,
   },
   created: function () {
-    try {
-      this.firebaseGet("keep1");
-    } catch (e) {
-      this.cards = cards;
-    }
+    this.cards = cards;
   },
   methods: {
     toggleCard: function(card){
