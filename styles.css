@@ -47,6 +47,11 @@ li {
 
 .card-text {
   text-align: center; 
+  font-size: 60px;
+}
+
+.card3-text {
+  text-align: center; 
   font-size: 40px;
 }
 

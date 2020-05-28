@@ -53,7 +53,7 @@
           <p class="card"  v-if="card.flipped === 1" key="number">
           
             <br/><br/><br/>
-            <span class="card-text" v-if="index === pickUpNumber">選我選我</span>
+            <span class="card3-text" v-if="index === pickUpNumber">選我選我</span>
             <span class="card-text" v-else>{{index+1}}</span>
             <span class="delete-card" v-on:click="cutCard(index)">X</span>
           </p>
