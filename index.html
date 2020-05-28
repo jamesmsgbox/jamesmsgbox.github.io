@@ -51,16 +51,17 @@
       <li v-for="(card, index) in cards" v-on:click="toggleCard(card, index)">
         <transition name="flip">
           <p class="card"  v-if="card.flipped === 1" key="number">
-            
-            <span v-if="index === pickUpNumber">選我選我</span>
-            <span v-else>{{index+1}}</span>
+          
+            <br/><br/><br/>
+            <span class="card-text" v-if="index === pickUpNumber">選我選我</span>
+            <span class="card-text" v-else>{{index+1}}</span>
             <span class="delete-card" v-on:click="cutCard(index)">X</span>
           </p>
-          <p class="card" v-else-if="card.flipped === 2" key="front">
+          <p class="card card2-text" v-else-if="card.flipped === 2" key="front">
             {{card.front}}
             <span class="delete-card" v-on:click="cutCard(index)">X</span>
           </p>
-          <p class="card" v-else-if="card.flipped === 3" key="back">
+          <p class="card card2-text" v-else-if="card.flipped === 3" key="back">
             {{card.back}}
             <span class="delete-card" v-on:click="cutCard(index)">X</span>
           </p>
