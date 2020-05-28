@@ -96,8 +96,11 @@ var vm = new Vue({
     console.log(this.pickUpNumber);
   },
   methods: {
-    toggleCard: function(card){
+    toggleCard: function(card, index){
       card.flipped = card.flipped + 1;
+      if (card.flipped == 2) {
+        this.pickUpNumber = index;
+      }
       if (card.flipped > 3) {
         card.flipped = 1;
       }

@@ -48,7 +48,7 @@
     </div>
 
     <ul class="flashcard-list">
-      <li v-for="(card, index) in cards" v-on:click="toggleCard(card)">
+      <li v-for="(card, index) in cards" v-on:click="toggleCard(card, index)">
         <transition name="flip">
           <p class="card"  v-if="card.flipped === 1" key="number">
             
