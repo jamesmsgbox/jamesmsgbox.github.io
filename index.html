@@ -57,7 +57,7 @@
             <span class="card-text" v-else>{{index+1}}</span>
             <span class="delete-card" v-on:click="cutCard(index)">X</span>
           </p>
-          <p class="card card2-text" v-else-if="card.flipped === 2" key="front">
+          <p class="card card2-text card-tw" v-else-if="card.flipped === 2" key="front">
             {{card.front}}
             <span class="delete-card" v-on:click="cutCard(index)">X</span>
           </p>
