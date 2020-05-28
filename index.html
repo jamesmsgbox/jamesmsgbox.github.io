@@ -53,16 +53,16 @@
           <p class="card"  v-if="card.flipped === 1" key="number">
             
             <span v-if="index === pickUpNumber">選我選我</span>
-            <span v-else="index === pickUpNumber">{{index+1}}</span>
-            <span class="delete-card" v-on:click="cards.splice(index, 1);randomNumber();">X</span>
+            <span v-else>{{index+1}}</span>
+            <span class="delete-card" v-on:click="cutCard(index)">X</span>
           </p>
           <p class="card" v-else-if="card.flipped === 2" key="front">
             {{card.front}}
-            <span class="delete-card" v-on:click="cards.splice(index, 1);randomNumber();">X</span>
+            <span class="delete-card" v-on:click="cutCard(index)">X</span>
           </p>
           <p class="card" v-else-if="card.flipped === 3" key="back">
             {{card.back}}
-            <span class="delete-card" v-on:click="cards.splice(index, 1);randomNumber();">X</span>
+            <span class="delete-card" v-on:click="cutCard(index)">X</span>
           </p>
         </transition>
       </li>

@@ -89,25 +89,31 @@ var vm = new Vue({
     isShow: false,
     pickUpText: 'Pick Me',
     pickUpNumber: 0,
+    lastOn: false,
   },
   created: function () {
     this.cards = cards;
     this.randomNumber();
-    console.log(this.pickUpNumber);
   },
   methods: {
     toggleCard: function(card, index){
       card.flipped = card.flipped + 1;
-      if (card.flipped == 2) {
+      if (card.flipped == 2 && !this.lastOn) {
         this.pickUpNumber = index;
       }
       if (card.flipped > 3) {
         card.flipped = 1;
+        this.randomNumber();
       }
+      this.lastOn = false;
+    },
+    cutCard: function(index){
+      this.lastOn = true;
+      this.cards.splice(index, 1);
+      this.randomNumber();
     },
     randomNumber: function(){
-      this.pickUpNumber =Math.floor(Math.random()*this.cards.length);
-      console.log(this.pickUpNumber);
+      this.pickUpNumber = Math.floor(Math.random()*this.cards.length);
     },
     addNew: function(){
       // !this.newFront || !this.newBack also works
