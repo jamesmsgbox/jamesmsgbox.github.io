@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <title>Cherry!</title>
+  <title>SuperEnglish!</title>
 </head>
 <body>
   <div id="flashcard-app" class="container">
@@ -61,7 +61,7 @@
             {{card.front}}
             <span class="delete-card" v-on:click="cutCard(index)">X</span>
           </p>
-          <p class="card card2-text" v-else-if="card.flipped === 3" key="back">
+          <p class="card card2-text card-en" v-else-if="card.flipped === 3" key="back">
             {{card.back}}
             <span class="delete-card" v-on:click="cutCard(index)">X</span>
           </p>

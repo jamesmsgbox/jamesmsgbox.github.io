@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/earlyaccess/cwtexyen.css);
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&display=swap');
 body {
   font-family: 'Montserrat', sans-serif;
   text-align: center;
@@ -27,33 +29,42 @@ li {
 
 .card {
   display: block;
-  width: 160px;
-  height: 200px;
-  padding: 60px 30px;
+  width: 208px;
+  height: 260px;
+  padding: 50px 20px;
   background-color: #51aae5;
   border-radius: 7px;
   margin: 5px;
-  line-height: 27px;
+  line-height: 30px;
   cursor: pointer;
   position: relative;
   color: #fff;
   font-weight: 600;
-  font-size: 28px;
+  font-size: 33px;
   -webkit-box-shadow: 9px 10px 22px -8px rgba(209,193,209,.5);
   -moz-box-shadow: 9px 10px 22px -8px rgba(209,193,209,.5);
   box-shadow: 9px 10px 22px -8px rgba(209,193,209,.5);
   will-change: transform;
+  font-family: 'Balsamiq Sans', cursive;
 }
 
 .card-tw {
+  font-size: 40px;
+  line-height: 38px;
   display:table-cell;
   vertical-align:middle;
   text-align:center;
+  font-family: 'cwTeXYen', sans-serif;
+}
+
+.card-en {
+  font-family: 'Balsamiq Sans', cursive;
+  line-height: 38px;
 }
 
 .card-text {
   text-align: center; 
-  font-size: 60px;
+  font-size: 80px;
 }
 
 .card3-text {
