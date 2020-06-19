@@ -58,7 +58,10 @@ li {
 
 .card-en {
   font-family: 'Balsamiq Sans', cursive;
+  display:table-cell;
+  vertical-align:middle;
   line-height: 38px;
+  font-size: 185%;
 }
 
 .card-text {
